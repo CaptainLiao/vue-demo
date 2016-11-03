@@ -1,7 +1,7 @@
 <template>
     <div class="form-group">
         <label :for="randomId">{{label}}</label>
-        <input type="text" v-bind:id="randomId" v-bind:value="value" v-on:input="onInput">
+        <input type="text" v-focus v-bind:id="randomId" v-bind:value="value" v-on:input="onInput">
     </div>
 </template>
 

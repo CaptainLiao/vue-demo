@@ -1,7 +1,18 @@
+<!--
 <template>
     <div id="app">
-        <p>{{msg}}</p>
+        <button v-on:click="showMSG">
+            Toggle
+        </button>
+        <transition  name="custom-animated"
+                     mode="out-in"
+                     enter-active-class="animated swing"
+                     leave-active-class="animated zoomOutDown">
+            <p v-if="show">{{msg}}</p>
+        </transition>
+        <hr>
         <hello></hello>
+
         <br>
         <input type="text" v-model="parentMsg">
         <br>
@@ -25,7 +36,7 @@
         <hr>
 
         <component v-bind:is="currentView">
-            <!-- 组件在 vm.currentview 变化时改变！ -->
+            &lt;!&ndash; 组件在 vm.currentview 变化时改变！ &ndash;&gt;
         </component>
         <hr>
 
@@ -50,7 +61,8 @@
                 msg: "你好我好大家好",
                 parentMsg: "",
                 total: "2",
-                formMsg: "快来看看啊，粗事了"
+                formMsg: "快来看看啊，粗事了",
+                show: true
             }
         },
         // 第二步：局部注册components,只能在父模板(id为app)可用
@@ -60,7 +72,14 @@
         methods: {
             parentcount: function () {
                 this.total ++;
+                console.log(this.$refs.slotDome);
+            },
+            showMSG: function () {
+                this.show = !this.show
             }
+        },
+        computed: {
+
         }
     }
 
@@ -70,5 +89,38 @@
     #app {
         width: 80%;
         margin: 100px auto;
+    }
+    #app button {
+        margin-bottom: 40px;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s
+    }
+    .fade-enter, .fade-leave-active {
+        opacity: 0
+    }
+</style>
+-->
+
+
+<template>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- use router-link component for navigation. -->
+            <!-- specify the link by passing the `to` prop. -->
+            <!-- <router-link> will be rendered as an `<a>` tag by default -->
+            <router-link to="/foo">Go to Hello</router-link>
+            <router-link to="/bar">Go to Secondcomponent</router-link>
+        </p>
+        <!-- route outlet -->
+        <!-- component matched by the route will render here -->
+        <router-view></router-view>
+    </div>
+</template>
+
+<style>
+    .router-link-active {
+        color: red;
     }
 </style>
