@@ -1,0 +1,16 @@
+[
+  {
+    "name": "线路管理",
+    "children": [
+      {
+        "name": "线路列表",
+        "path": "/routelist"
+      },{
+        "name": "新增线路",
+        "path": "/addroute"
+      }
+    ]
+  },{
+  "name": "注销"
+}
+]

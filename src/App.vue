@@ -1,3 +1,70 @@
+<template>
+    <div id="app">
+        <ym-header></ym-header>
+        <div class="ym-main">
+            <router-view></router-view>
+        </div>
+        <ym-footer></ym-footer>
+    </div>
+</template>
+
+<style lang="less">
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    #app {
+        height: 100%;
+    }
+
+    body {
+        font-family: 'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',SimSun,sans-serif;
+        overflow: auto;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        color: #4078c0;
+        text-decoration: none;
+    }
+
+    button, input, select, textarea {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--
 <template>
     <div id="app">
@@ -100,27 +167,70 @@
         opacity: 0
     }
 </style>
--->
 
 
 <template>
     <div id="app">
         <h1>Hello App!</h1>
         <p>
-            <!-- use router-link component for navigation. -->
-            <!-- specify the link by passing the `to` prop. -->
-            <!-- <router-link> will be rendered as an `<a>` tag by default -->
-            <router-link to="/foo">Go to Hello</router-link>
-            <router-link to="/bar">Go to Secondcomponent</router-link>
+            &lt;!&ndash; use router-link component for navigation. &ndash;&gt;
+            &lt;!&ndash; specify the link by passing the `to` prop. &ndash;&gt;
+            &lt;!&ndash; <router-link> will be rendered as an `<a>` tag by default &ndash;&gt;
+            <router-link :to="{name: 'user',params:{id: 123}}">Go to fisrt</router-link>
+            <router-link to="/user/3">Go to Secondcomponent</router-link>
+            <router-link to="/user/3/profile">Go to Hello</router-link>
+            <router-link to="/user/3/posts">Go to 第四个</router-link>
         </p>
-        <!-- route outlet -->
-        <!-- component matched by the route will render here -->
-        <router-view></router-view>
+        &lt;!&ndash; route outlet &ndash;&gt;
+        &lt;!&ndash; component matched by the route will render here &ndash;&gt;
+        <transition name="custom-animated"
+                    mode="out-in"
+                    enter-active-class="animated swing"
+                    leave-active-class="animated zoomOutDown">
+            <router-view></router-view>
+        </transition>
+        <router-view name="a"></router-view>
     </div>
 </template>
 
-<style>
+<script>
+
+    export default {
+        methods: {
+
+        },
+        computed: {
+            fullname: {
+                get: function () {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set: function (newName) {
+                    var names = newName.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        }
+    }
+</script>
+
+<style lang="less">
     .router-link-active {
         color: red;
     }
-</style>
+    #app {
+        position: relative;
+        height: 800px;
+        a:first-of-type {
+            position: fixed;
+            left:0;
+            bottom: 0;
+        }
+        a:last-of-type {
+            right: 0;
+            position: fixed;
+
+            bottom: 0;
+        }
+    }
+</style>-->
